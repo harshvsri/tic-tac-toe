@@ -18,7 +18,17 @@ body {
 
 .heading {
   font-size: 3rem;
-  padding: 20px;
+  margin: 1rem;
+}
+
+.reset-btn {
+  font-size: 1.5rem;
+  border: 1px solid white;
+  border-radius: 0.25rem;
+
+  margin: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
 .game-board {
@@ -35,8 +45,8 @@ body {
   border: 2px solid white;
   border-radius: 1rem;
   background-color: rgb(195, 191, 185);
-  height: 100px;
-  width: 100px;
+  height: 8rem;
+  width: 8rem;
 
   font-size: 70px;
   font-weight: 700;
