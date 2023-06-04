@@ -50,7 +50,7 @@ function addEventHandler(boardCell) {
           gameResult.textContent = `Game Draw`;
           gameOver = true;
         } else {
-          playerMark = playerMark === "X" ? "0" : "X";
+          playerMark = playerMark === "X" ? "O" : "X";
         }
       }
     }

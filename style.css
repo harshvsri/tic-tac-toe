@@ -45,8 +45,8 @@ body {
   border: 2px solid white;
   border-radius: 1rem;
   background-color: rgb(195, 191, 185);
-  height: 8rem;
-  width: 8rem;
+  height: 5rem;
+  width: 5rem;
 
   font-size: 70px;
   font-weight: 700;
@@ -54,4 +54,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.result {
+  font-size: 2rem;
+  margin: 1rem;
 }
