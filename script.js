@@ -3,8 +3,11 @@ const gameBoard = [
   [" ", " ", " "],
   [" ", " ", " "],
 ];
+const playerX = "X";
+const playerO = "O";
+
 let gameOver = false;
-let playerMark = "X";
+let currentPlayer = playerX;
 let moveCount = 0;
 
 const board = document.querySelector(".game-board");
@@ -26,44 +29,43 @@ for (let i = 0; i < 3; i++) {
 }
 
 resetButton.addEventListener("click", () => {
-  console.log("reset");
   resetBoard();
 });
 
 // Adding Event Listener to board cell.
 function addEventHandler(boardCell) {
   boardCell.addEventListener("click", () => {
-    console.log("Click");
     if (!gameOver) {
       if (boardCell.textContent === "") {
         const row = parseInt(boardCell.dataset.row);
         const col = parseInt(boardCell.dataset.column);
-        gameBoard[row][col] = playerMark;
+        gameBoard[row][col] = currentPlayer;
 
-        boardCell.textContent = playerMark;
+        boardCell.textContent = currentPlayer;
         moveCount++;
-        gameOver = haveWon(playerMark);
+        gameOver = haveWon(currentPlayer);
 
         if (gameOver) {
-          gameResult.textContent = `Player ${playerMark} has won.`;
+          gameResult.textContent = `Player ${currentPlayer} has won.`;
         } else if (moveCount === 9) {
           gameResult.textContent = `Game Draw`;
           gameOver = true;
         } else {
-          playerMark = playerMark === "X" ? "O" : "X";
+          currentPlayer = currentPlayer === playerX ? playerO : playerX;
         }
       }
+      // We can implement a message that the place is already occupied.
     }
   });
 }
 
-function haveWon(playerMark) {
+function haveWon(currentPlayer) {
   // Win Condition for row.
   for (let i = 0; i < 3; i++) {
     if (
-      gameBoard[i][0] === playerMark &&
-      gameBoard[i][1] === playerMark &&
-      gameBoard[i][2] === playerMark
+      gameBoard[i][0] === currentPlayer &&
+      gameBoard[i][1] === currentPlayer &&
+      gameBoard[i][2] === currentPlayer
     ) {
       return true;
     }
@@ -72,9 +74,9 @@ function haveWon(playerMark) {
   // Win Condition for column.
   for (let i = 0; i < 3; i++) {
     if (
-      gameBoard[0][i] === playerMark &&
-      gameBoard[1][i] === playerMark &&
-      gameBoard[2][i] === playerMark
+      gameBoard[0][i] === currentPlayer &&
+      gameBoard[1][i] === currentPlayer &&
+      gameBoard[2][i] === currentPlayer
     ) {
       return true;
     }
@@ -82,16 +84,16 @@ function haveWon(playerMark) {
 
   // Win Condition for diagonal.
   if (
-    gameBoard[0][0] == playerMark &&
-    gameBoard[1][1] == playerMark &&
-    gameBoard[2][2] == playerMark
+    gameBoard[0][0] === currentPlayer &&
+    gameBoard[1][1] === currentPlayer &&
+    gameBoard[2][2] === currentPlayer
   ) {
     return true;
   }
   if (
-    gameBoard[0][2] == playerMark &&
-    gameBoard[1][1] == playerMark &&
-    gameBoard[2][0] == playerMark
+    gameBoard[0][2] === currentPlayer &&
+    gameBoard[1][1] === currentPlayer &&
+    gameBoard[2][0] === currentPlayer
   ) {
     return true;
   }
@@ -114,7 +116,7 @@ function resetBoard() {
 
   // Reset game over flag, player mark, and move count
   gameOver = false;
-  playerMark = "X";
+  currentPlayer = playerX;
   moveCount = 0;
 
   // Clear the game result message
