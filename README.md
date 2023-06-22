@@ -4,7 +4,7 @@ This is a simple tic-tac-toe game implemented using HTML, CSS, and JavaScript. I
 
 ## Demo
 
-You can play the game live [here](https://example.com).
+You can play the game live [here](harshvsri.github.io/tic-tac-toe/).
 
 ## Features
 
